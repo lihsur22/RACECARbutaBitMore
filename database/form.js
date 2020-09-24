@@ -1,5 +1,15 @@
 class Form {
-    constructor(){}
+    constructor(){
+        this.input = createInput('Name');
+        this.button = createButton('Play');
+        this.greet = createElement('h3');
+    }
+
+    hideAll(){
+        this.greet.hide();
+        this.input.hide();
+        this.button.hide();
+    }
 
     display()
     {
@@ -7,26 +17,22 @@ class Form {
         title.html('Car Race');
         title.position(130,0);
 
-        var input = createInput('name');
-        var button = createButton('play');
-
-        input.position(150,150);
+        this.input.position(150,150);
     
-        button.position(250,250);
-        button.mousePressed(function(){
-            input.hide();
-            button.hide();
-            
-            var name = input.value();
-            
-            playC += 1;
-            Play.update(name);
-            Play.updateCount(playC);
-            var greet = createElement('h3');
-            greet.html('hello ' + name);
-            greet.position(130,130);
-        });
+        this.button.position(250,250);
+        this.button.mousePressed(() => {
+            this.input.hide();
+            this.button.hide();
 
-        console.log("form");
+            Play.name = this.input.value();
+            Play.index = playC;
+
+            playC += 1;
+            Play.updateCount(playC);
+            Play.update();
+
+            this.greet.html('hello ' + Play.name);
+            this.greet.position(130,130);
+        });
     }
 };
