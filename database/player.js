@@ -27,8 +27,8 @@ class Player {
     }
 
     static playerInfo() {
-        var info = db.ref('player');
-        info.on("value",(data) => {
+        var info = db.ref('players');
+        info.on("value",(data)=>{
             allPlayer = data.val();
         });
     }

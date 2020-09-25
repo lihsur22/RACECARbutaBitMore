@@ -13,13 +13,13 @@ class Form {
 
     display()
     {
-        var title = createElement('h2');
+        var title = createElement('h1');
         title.html('Car Race');
-        title.position(130,0);
+        title.position((displayWidth/2) - 50,0);
 
-        this.input.position(150,150);
+        this.input.position((displayWidth/2) - 50,(displayHeight/2) - 400);
     
-        this.button.position(250,250);
+        this.button.position((displayWidth/2) + 30,(displayHeight/2) - 300);
         this.button.mousePressed(() => {
             this.input.hide();
             this.button.hide();
@@ -32,7 +32,7 @@ class Form {
             Play.update();
 
             this.greet.html('hello ' + Play.name);
-            this.greet.position(130,130);
+            this.greet.position((displayWidth/2) + 30,(displayHeight/4));
         });
     }
 };
