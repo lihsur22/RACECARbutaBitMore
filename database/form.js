@@ -3,6 +3,7 @@ class Form {
         this.input = createInput('Name');
         this.button = createButton('Play');
         this.greet = createElement('h3');
+        this.reset = createButton('Reset');
     }
 
     hideAll(){
@@ -17,10 +18,16 @@ class Form {
         title.html('Car Race');
         title.position((displayWidth/2) - 50,0);
 
+        this.reset.position(20,30);
+        this.reset.mousePressed(()=>{
+            game.update(0);
+            Play.updateCount(0);
+        });
+
         this.input.position((displayWidth/2) - 50,(displayHeight/2) - 400);
     
         this.button.position((displayWidth/2) + 30,(displayHeight/2) - 300);
-        this.button.mousePressed(() => {
+        this.button.mousePressed(()=>{
             this.input.hide();
             this.button.hide();
 

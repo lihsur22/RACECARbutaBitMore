@@ -13,8 +13,10 @@ class Game {
             {
                 gameState:state
             }
-        )
+        );
     }
+
+
 
     async start() {
         if(gameState == 0)
@@ -27,6 +29,7 @@ class Game {
             }
             form = new Form();
             form.display();
+            form.reset.show();
         }
         c1 = createSprite(100,200);
         c2 = createSprite(300,200);
@@ -45,12 +48,15 @@ class Game {
         //text("Game Has Started", 250, 50);
 
         Player.playerInfo();
+        form.reset.hide();
 
         if(allPlayer !== undefined)
         {
             var index = 0;
             var x = 220;
             var y;
+
+            background(trackImg,displayHeight/2,displayWidth/4);
 
             for(var plr in allPlayer){
                 index = index + 1;
@@ -61,13 +67,15 @@ class Game {
                 cars[index - 1].y = y;
 
                 if(index === Play.index + 1)
-                {
+                {   
+                    stroke(10);
+                    fill("red");
+                    ellipse(x,y,100,100);
                     cars[index - 1].shapeColor = "red";
                     camera.position.x = displayWidth/2;
                     camera.position.y = cars[index - 1].y;
                 }
             }
-            background(trackImg,displayHeight/2,displayWidth/4);
         }
 
         if(keyIsDown(UP_ARROW) && Play.index !== null){
@@ -79,9 +87,11 @@ class Game {
             this.update(2);
         }
         drawSprites();
+        console.log(allPlayer);
     }
 
     end(){
         console.log("end");
+        form.reset.show();
     }
 };
