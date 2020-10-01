@@ -4,6 +4,7 @@ class Form {
         this.button = createButton('Play');
         this.greet = createElement('h3');
         this.reset = createButton('Reset');
+        this.congr = createElement('h1');
     }
 
     hideAll(){
@@ -22,7 +23,12 @@ class Form {
         this.reset.mousePressed(()=>{
             game.update(0);
             Play.updateCount(0);
+            Player.updateCarsAtEnd(0);
         });
+        
+        this.congr.html('Congratulations\nYour Rank Was ' + Play.rank);
+        this.congr.position(displayWidth/2,displayHeight/2);
+        this.congr.hide();
 
         this.input.position((displayWidth/2) - 50,(displayHeight/2) - 400);
     

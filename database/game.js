@@ -48,7 +48,9 @@ class Game {
         //text("Game Has Started", 250, 50);
 
         Player.playerInfo();
+        Play.getCarsAtEnd();
         form.reset.hide();
+        form.congr.hide();
 
         if(allPlayer !== undefined)
         {
@@ -56,7 +58,8 @@ class Game {
             var x = 220;
             var y;
 
-            background(trackImg,displayHeight/2,displayWidth/4);
+            background(0,0,0);
+            image(trackImg, 0, -displayHeight * 4, displayWidth, (displayHeight * 5) + 200);
 
             for(var plr in allPlayer){
                 index = index + 1;
@@ -67,7 +70,7 @@ class Game {
                 cars[index - 1].y = y;
 
                 if(index === Play.index + 1)
-                {   
+                {
                     stroke(10);
                     fill("red");
                     ellipse(x,y,100,100);
@@ -78,20 +81,24 @@ class Game {
             }
         }
 
-        if(keyIsDown(UP_ARROW) && Play.index !== null){
+        if(keyIsDown(UP_ARROW) && Play.index !== null && allPlayer[plr].distance !== 5250){
             Play.distance += 10;
             Play.update();
         }
-        if(Play.distance >= 6500)
+        if(Play.distance >= 5250)
         {
+            Play.rank += 1;
+            Player.updateCarsAtEnd(Play.rank);
             this.update(2);
         }
         drawSprites();
-        console.log(allPlayer);
+        console.log(cars[3].y);
     }
 
     end(){
         console.log("end");
+        console.log(Play.rank);
         form.reset.show();
+        //form.congr.show();
     }
 };

@@ -11,7 +11,7 @@ function preload(){
     c3Img = loadImage("images/car3.png");
     c4Img = loadImage("images/car4.png");
     grundImg = loadImage("images/ground.png");
-    trackImg = loadImage("images/track.png");
+    trackImg = loadImage("images/track.jpg");
 }
 
 function setup(){
